@@ -12,4 +12,7 @@ job(type: Maven) {
     logRotator(-1, 20, -1, -1)
     rootPOM("pom.xml")
     goals("test")
+    publishers {
+        mailer("list@palominolabs.com", true, false)
+    }
 }
