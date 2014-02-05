@@ -14,4 +14,8 @@ job {
         shell("""set -e
 make""")
     }
+    publishers {
+        archiveArtifacts("src/redis-server,src/redis-cli", "", true)
+        downstream("staging-deploy")
+    }
 }

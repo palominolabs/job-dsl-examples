@@ -7,8 +7,13 @@ job {
     }
 
     steps {
+        copyArtifacts("redis", "", "", true) {
+            latestSuccessful()
+        }
+
         shell """
-        /usr/games/cowsay "Tagging version \$NEW_VERSION"
+        shasum redis-*
+        /usr/games/cowsay "Releasing version \$NEW_VERSION"
         """
     }
 }
